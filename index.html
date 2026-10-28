@@ -3,771 +3,1325 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dhairya Tiwari // Developer File &amp; Portfolio</title>
-  <meta name="description" content="Personal developer portfolio of Dhairya Tiwari, B.Tech Computer Science Engineering student at NST-ADYPU, Pune. Focusing on programming, game development, and building projects.">
+  <title>Dhairya Tiwari // Invincible 3D Superhero Comic Portfolio</title>
+  <meta name="description" content="Immersive 3D superhero comic-book developer portfolio of Dhairya Tiwari — B.Tech Computer Science Engineering student at NST-ADYPU, Pune. Character-driven Invincible comic scenes, 3D motion, and practical projects.">
   <meta name="author" content="Dhairya Tiwari">
-  <meta name="theme-color" content="#090C0B">
+  <meta name="theme-color" content="#FFE500">
 
-  <!-- Open Graph Meta Tags for Sharing -->
-  <meta property="og:title" content="Dhairya Tiwari // Developer File &amp; Portfolio">
-  <meta property="og:description" content="B.Tech Computer Science Engineering student at NST-ADYPU, Pune. Programming, game development, and hands-on projects.">
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Dhairya Tiwari // Invincible 3D Superhero Comic Portfolio">
+  <meta property="og:description" content="Superhero comic-book developer portfolio of Dhairya Tiwari. B.Tech CSE at NST-ADYPU, Pune.">
   <meta property="og:type" content="website">
+
+  <!-- Three.js from CDN with local WebGL fallback built-in -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <!-- Accessibility: Skip to Content Link -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+<body data-theme="invincible">
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to comic story content</a>
 
-  <!-- Ambient CRT / Surveillance Grain & Scanline Overlay (Non-blocking, decorative) -->
-  <div class="terminal-overlay" aria-hidden="true"></div>
+  <!-- Halftone Dot & Ink Print Overlay (Non-blocking decorative) -->
+  <div class="comic-print-overlay" aria-hidden="true"></div>
+
+  <!-- Comic Speed Lines Backdrop Effect (CSS generated) -->
+  <div class="comic-speed-lines" id="speed-lines" aria-hidden="true"></div>
+
+  <!-- Global Impact Flash Screen (Triggered briefly on scene transitions) -->
+  <div class="comic-impact-flash" id="impact-flash" aria-hidden="true"></div>
 
   <!-- =========================================================================
-       HEADER & NAVIGATION
+       HEADER & 7-SCENE COMIC NAVIGATION
        ========================================================================= -->
   <header class="site-header" id="site-header">
     <div class="header-container">
-      <a href="#hero" class="brand-link" aria-label="Dhairya Tiwari Portfolio Home">
-        <!-- Original DT Tactical Monogram -->
-        <span class="insignia-badge" aria-hidden="true">
-          <svg class="insignia-svg" viewBox="0 0 44 44" width="34" height="34" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="22,3 41,13 41,31 22,41 3,31 3,13" stroke="currentColor" stroke-width="2.2" class="insignia-hex"/>
-            <polygon points="22,7 37,15 37,29 22,37 7,29 7,15" fill="currentColor" fill-opacity="0.08"/>
-            <text x="22" y="27" font-family="'Impact', 'Arial Black', sans-serif" font-size="16" font-weight="900" fill="currentColor" text-anchor="middle" letter-spacing="1">DT</text>
-          </svg>
+      
+      <!-- Comic Brand Logo -->
+      <a href="#hero" class="brand-link" aria-label="Dhairya Tiwari Portfolio Comic Cover">
+        <span class="comic-insignia" aria-hidden="true">
+          <span class="insignia-shape"></span>
+          <span class="insignia-text">DT</span>
         </span>
         <div class="brand-text">
           <span class="brand-name">DHAIRYA TIWARI</span>
-          <span class="brand-sub">PERSONNEL FILE // REC-2026</span>
+          <span class="brand-sub">ISSUE #01 // 7-CHAPTER COMIC</span>
         </div>
       </a>
 
-      <!-- Desktop & Mobile Navigation Menu -->
-      <nav class="site-nav" id="site-nav" aria-label="Main Navigation">
+      <!-- Desktop Comic Strip Navigation (7 Main Sections) -->
+      <nav class="site-nav" id="site-nav" aria-label="Comic Chapter Navigation">
         <ul class="nav-list" role="list">
-          <li class="nav-item"><a href="#about" class="nav-link"><span class="nav-index">01.</span>ABOUT</a></li>
-          <li class="nav-item"><a href="#skills" class="nav-link"><span class="nav-index">02.</span>SKILLS</a></li>
-          <li class="nav-item"><a href="#projects" class="nav-link"><span class="nav-index">03.</span>PROJECTS</a></li>
-          <li class="nav-item"><a href="#focus" class="nav-link"><span class="nav-index">04.</span>OBJECTIVES</a></li>
-          <li class="nav-item"><a href="#contact" class="nav-link"><span class="nav-index">05.</span>CONTACT</a></li>
+          <li class="nav-item"><a href="#hero" class="nav-link active" data-nav="hero"><span class="nav-num">01.</span>COVER</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link" data-nav="about"><span class="nav-num">02.</span>ABOUT</a></li>
+          <li class="nav-item"><a href="#academics" class="nav-link" data-nav="academics"><span class="nav-num">03.</span>ACADEMICS</a></li>
+          <li class="nav-item"><a href="#skills" class="nav-link" data-nav="skills"><span class="nav-num">04.</span>ABILITIES</a></li>
+          <li class="nav-item"><a href="#projects" class="nav-link" data-nav="projects"><span class="nav-num">05.</span>MISSIONS</a></li>
+          <li class="nav-item"><a href="#journey" class="nav-link" data-nav="journey"><span class="nav-num">06.</span>JOURNEY</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link" data-nav="contact"><span class="nav-num">07.</span>FINALE</a></li>
         </ul>
       </nav>
 
-      <!-- System Diagnostic Status Indicator -->
-      <div class="header-status" aria-label="System status: Personnel record active">
-        <span class="status-pip" aria-hidden="true"></span>
-        <span class="status-label">SYS_ACTIVE</span>
+      <!-- Comic Control Toolbar (Sound FX, Theme Selector, Chapter Tracker) -->
+      <div class="header-tools">
+        <!-- Interactive Theme Selector Dropdown / Cycle -->
+        <div class="theme-selector-wrap">
+          <button type="button" class="tool-btn theme-cycle-btn" id="theme-cycle-btn" aria-label="Cycle Comic Palette Theme" title="Theme: Invincible / Omni-Man / Thragg">
+            <span class="theme-dot" aria-hidden="true"></span>
+            <span class="theme-label" id="current-theme-label">INVINCIBLE</span>
+          </button>
+        </div>
+
+        <!-- Interactive Web Audio Comic FX Toggle (Muted by default) -->
+        <button type="button" class="tool-btn sfx-toggle" id="sfx-toggle" aria-label="Toggle comic sound effects" title="Toggle Comic Sound FX">
+          <span class="sfx-icon" aria-hidden="true">🔊</span>
+          <span class="sfx-status">SFX: OFF</span>
+        </button>
+
+        <!-- Chapter Pill Indicator -->
+        <div class="issue-pill" aria-label="Current comic issue">
+          <span class="issue-dot" aria-hidden="true"></span>
+          <span class="issue-text" id="issue-tracker">01. COVER</span>
+        </div>
+
+        <!-- Accessible Mobile Hamburger Button -->
+        <button type="button" 
+                class="mobile-toggle" 
+                id="mobile-toggle" 
+                aria-controls="site-nav" 
+                aria-expanded="false" 
+                aria-label="Toggle comic chapter navigation menu">
+          <span class="toggle-stripe"></span>
+          <span class="toggle-stripe"></span>
+          <span class="toggle-stripe"></span>
+        </button>
       </div>
 
-      <!-- Accessible Mobile Menu Toggle Button -->
-      <button type="button" 
-              class="mobile-toggle" 
-              id="mobile-toggle" 
-              aria-controls="site-nav" 
-              aria-expanded="false" 
-              aria-label="Toggle navigation menu">
-        <span class="toggle-bar"></span>
-        <span class="toggle-bar"></span>
-        <span class="toggle-bar"></span>
-      </button>
     </div>
   </header>
 
   <!-- =========================================================================
-       MAIN CONTENT
+       MAIN COMIC STRIP CANVAS & SECTIONS
        ========================================================================= -->
   <main id="main-content">
 
     <!-- =======================================================================
-         SECTION: HERO — SIGNATURE EXPERIENCE
+         SECTION 1 — HOME: THE COMIC COVER
          ======================================================================= -->
-    <section class="section-hero" id="hero" aria-labelledby="hero-name">
-      <div class="content-container hero-layout">
+    <section class="comic-section section-hero" id="hero" data-scene="01" aria-labelledby="hero-title">
+      
+      <!-- Three.js 3D WebGL Canvas (Background layer with pointer-events: none) -->
+      <div class="hero-canvas-container" aria-hidden="true">
+        <canvas id="hero-three-canvas" class="hero-three-canvas"></canvas>
+        <!-- Pure CSS 3D Fallback Scene if WebGL fails -->
+        <div class="webgl-fallback-scene" id="webgl-fallback">
+          <div class="fallback-orb"></div>
+          <div class="fallback-ring fallback-ring-1"></div>
+          <div class="fallback-ring fallback-ring-2"></div>
+          <div class="fallback-plate plate-back"></div>
+          <div class="fallback-plate plate-front"></div>
+        </div>
+      </div>
+
+      <div class="content-container hero-stage">
         
-        <!-- Left: Hero Briefing Dossier -->
-        <div class="hero-dossier">
+        <!-- Left: Dimensional Splash Page Narrative -->
+        <div class="hero-narrative" data-parallax="0.08">
           
-          <!-- Tactical Coordinate & Security Clearance Banner -->
-          <div class="telemetry-bar">
-            <span class="telemetry-tag"><span class="telemetry-dot"></span> SEC-ID: DT-PUN-26</span>
-            <span class="telemetry-sep" aria-hidden="true">//</span>
-            <span class="telemetry-tag">CLEARANCE: CSE_STUDENT</span>
-            <span class="telemetry-sep" aria-hidden="true">//</span>
-            <span class="telemetry-tag tag-highlight">FILE 001 LOADED</span>
+          <!-- Comic Issue Bar -->
+          <div class="comic-banner">
+            <span class="banner-badge">ISSUE #01</span>
+            <span class="banner-title">INVINCIBLE ORIGINS</span>
+            <span class="banner-tag">STUDENT DEVELOPER FILE</span>
           </div>
 
-          <!-- Main Identity & Impact Headline -->
-          <div class="hero-headline-group">
-            <p class="hero-kicker">DEVELOPER PROFILE // NST-ADYPU</p>
-            <h1 class="hero-name" id="hero-name">DHAIRYA TIWARI</h1>
-            <p class="hero-motto">
-              <span class="motto-accent">BUILDING.</span> 
-              <span class="motto-accent">LEARNING.</span> 
-              <span class="motto-accent">LEVELING UP.</span>
-            </p>
+          <!-- Oversized Comic Typography with Clipping Mask Animation -->
+          <div class="hero-typography-group">
+            <p class="hero-kicker">CSE STUDENT // NST-ADYPU, PUNE</p>
+            <h1 class="hero-name" id="hero-title">
+              <span class="name-line line-first">DHAIRYA</span>
+              <span class="name-line line-last">TIWARI</span>
+            </h1>
+            <div class="hero-motto-plate">
+              <span class="motto-impact">BUILDING MY NEXT LEVEL.</span>
+            </div>
           </div>
 
-          <!-- Verified Introduction Copy -->
+          <!-- Confirmed Introduction Copy -->
           <p class="hero-bio">
             I'm <strong>Dhairya Tiwari</strong>, a Computer Science Engineering student at <strong>NST-ADYPU in Pune</strong>. 
             I'm interested in programming and game development, and I'm developing my technical skills by learning, experimenting, and building projects.
           </p>
 
-          <!-- Action Calls -->
+          <!-- High-Energy Comic Actions -->
           <div class="hero-actions">
-            <a href="#projects" class="btn btn-primary">
-              <span class="btn-text">EXPLORE MY WORK</span>
-              <span class="btn-arrow" aria-hidden="true">↓</span>
+            <a href="#projects" class="comic-btn btn-hero-primary" id="btn-explore">
+              <span class="btn-skew-bg"></span>
+              <span class="btn-label">EXPLORE MISSIONS</span>
+              <span class="btn-comic-arrow" aria-hidden="true">⚡</span>
             </a>
-            <a href="#about" class="btn btn-secondary">
-              <span class="btn-text">VIEW DOSSIER</span>
-              <span class="btn-arrow" aria-hidden="true">→</span>
+            <a href="#about" class="comic-btn btn-hero-secondary" id="btn-about">
+              <span class="btn-skew-bg"></span>
+              <span class="btn-label">ABOUT ME</span>
+              <span class="btn-comic-arrow" aria-hidden="true">→</span>
             </a>
           </div>
 
-          <!-- Quick Tactical Telemetry Ribbon -->
-          <dl class="hero-specs-ribbon">
-            <div class="spec-pill">
-              <dt class="spec-key">LOCATION</dt>
-              <dd class="spec-val">Pune, India</dd>
+          <!-- Quick Comic Stat Badges -->
+          <div class="hero-meta-strip">
+            <div class="meta-panel">
+              <span class="meta-label">BASE</span>
+              <strong class="meta-value">Pune, India</strong>
             </div>
-            <div class="spec-pill">
-              <dt class="spec-key">DISCIPLINE</dt>
-              <dd class="spec-val">B.Tech CSE</dd>
+            <div class="meta-panel">
+              <span class="meta-label">ACADEMIC</span>
+              <strong class="meta-value">B.Tech CSE</strong>
             </div>
-            <div class="spec-pill">
-              <dt class="spec-key">PRIMARY TRACK</dt>
-              <dd class="spec-val">Programming &amp; Game Dev</dd>
+            <div class="meta-panel">
+              <span class="meta-label">FOCUS</span>
+              <strong class="meta-value">Code &amp; Game Dev</strong>
             </div>
-            <div class="spec-pill">
-              <dt class="spec-key">STATUS</dt>
-              <dd class="spec-val status-val"><span class="mini-pip"></span>Active Learner</dd>
+            <div class="meta-panel meta-pulse">
+              <span class="meta-label">STATUS</span>
+              <strong class="meta-value">Active Learner</strong>
             </div>
-          </dl>
+          </div>
 
         </div>
 
-        <!-- Right: Technical Schematic Dossier Panel (CSS/SVG Graphic Novel & Facility Schematics) -->
-        <div class="hero-graphic-panel" aria-hidden="true">
-          <div class="schematic-frame">
-            <!-- Corner Brackets -->
-            <div class="frame-corner corner-tl"></div>
-            <div class="frame-corner corner-tr"></div>
-            <div class="frame-corner corner-bl"></div>
-            <div class="frame-corner corner-br"></div>
-
-            <!-- Header of Dossier Card -->
-            <div class="schematic-header">
-              <span class="schematic-serial">SPEC-REC // 2026-DT</span>
-              <span class="schematic-status">DIAGNOSTIC: ONLINE</span>
+        <!-- Right: 3D Layered Comic Cover Plate (Interactive 3D Tilt) -->
+        <div class="hero-cover-stage" id="hero-cover-stage" aria-hidden="true">
+          <div class="comic-cover-3d-card" id="hero-cover-card">
+            
+            <!-- Comic Corner Seal -->
+            <div class="cover-seal">
+              <span class="seal-rating">DEV</span>
+              <span class="seal-price">FREE</span>
             </div>
 
-            <!-- Central Technical Visual (Halftone Grid + Tactical Insignia + Coordinate Reticle) -->
-            <div class="schematic-body">
-              <div class="reticle-grid"></div>
+            <!-- Frame Top Bar -->
+            <div class="cover-top-bar">
+              <span class="cover-barcode">||| | |||| | ||| ||||</span>
+              <span class="cover-edition">LIMITED FIRST PRINT</span>
+            </div>
+
+            <!-- Geometric Superhero Crest Visual -->
+            <div class="cover-art-center">
+              <div class="celestial-burst"></div>
               
-              <!-- Central DT Crest Graphic -->
-              <div class="schematic-crest">
-                <svg viewBox="0 0 200 200" class="crest-svg" width="100%" height="100%">
-                  <!-- Concentric Tactical Circles -->
-                  <circle cx="100" cy="100" r="90" stroke="#344137" stroke-width="1.5" stroke-dasharray="6 4" fill="none" opacity="0.6"/>
-                  <circle cx="100" cy="100" r="76" stroke="#A8D98D" stroke-width="1.2" stroke-dasharray="14 8" fill="none" opacity="0.4"/>
-                  <circle cx="100" cy="100" r="60" stroke="#344137" stroke-width="1" fill="none"/>
-                  
-                  <!-- Comic Angle Cut Accents -->
-                  <polygon points="100,14 186,100 100,186 14,100" stroke="#FFD447" stroke-width="1.5" fill="none" opacity="0.35"/>
-                  <polygon points="100,28 172,100 100,172 28,100" fill="#121814" stroke="#344137" stroke-width="2"/>
-                  
-                  <!-- Crosshairs -->
-                  <line x1="10" y1="100" x2="190" y2="100" stroke="#344137" stroke-width="1" opacity="0.5"/>
-                  <line x1="100" y1="10" x2="100" y2="190" stroke="#344137" stroke-width="1" opacity="0.5"/>
-                  
-                  <!-- Central Shield & Monogram -->
-                  <polygon points="100,45 150,72 150,128 100,155 50,128 50,72" fill="#090C0B" stroke="#A8D98D" stroke-width="2.5"/>
-                  <text x="100" y="112" font-family="'Impact', 'Arial Black', sans-serif" font-size="42" font-weight="900" fill="#F0F0E8" text-anchor="middle" letter-spacing="2">DT</text>
-                  <text x="100" y="138" font-family="monospace" font-size="9" fill="#A8D98D" text-anchor="middle" letter-spacing="3">NST // CSE</text>
-                </svg>
-              </div>
+              <!-- Original Geometric Hero Shield -->
+              <svg viewBox="0 0 240 240" class="hero-crest-svg" width="220" height="220">
+                <defs>
+                  <linearGradient id="crestGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFE500" />
+                    <stop offset="100%" stop-color="#1769FF" />
+                  </linearGradient>
+                  <pattern id="halftoneDotPattern" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+                    <circle cx="4" cy="4" r="1.5" fill="#FFE500" opacity="0.35"/>
+                  </pattern>
+                </defs>
 
-              <!-- Technical Parameter Telemetry Rows -->
-              <div class="schematic-metrics">
-                <div class="metric-row">
-                  <span class="m-label">ENGINEERING BASE</span>
-                  <span class="m-val">NST-ADYPU</span>
-                </div>
-                <div class="metric-row">
-                  <span class="m-label">PRIMARY LANGUAGE</span>
-                  <span class="m-val">PYTHON / C# / JS</span>
-                </div>
-                <div class="metric-row">
-                  <span class="m-label">DEVELOPMENT FOCUS</span>
-                  <span class="m-val highlight-blue">GAMES &amp; SOFTWARE</span>
-                </div>
-                <div class="metric-row">
-                  <span class="m-label">VERIFIED RECORD</span>
-                  <span class="m-val highlight-green">ACADEMIC // 2024-2027</span>
-                </div>
+                <!-- Comic Speed Ray Polygons -->
+                <polygon points="120,10 135,100 120,95 105,100" fill="#FFE500" opacity="0.8"/>
+                <polygon points="230,120 140,135 145,120 140,105" fill="#FFE500" opacity="0.8"/>
+                <polygon points="120,230 105,140 120,145 135,140" fill="#1769FF" opacity="0.8"/>
+                <polygon points="10,120 100,105 95,120 100,135" fill="#1769FF" opacity="0.8"/>
+
+                <!-- Halftone Ring -->
+                <circle cx="120" cy="120" r="95" fill="url(#halftoneDotPattern)" stroke="#080808" stroke-width="4"/>
+
+                <!-- Angled Diamond Outer Border -->
+                <polygon points="120,24 216,120 120,216 24,120" fill="#080808" stroke="#FFE500" stroke-width="4"/>
+                <polygon points="120,38 202,120 120,202 38,120" fill="#1769FF" stroke="#080808" stroke-width="3"/>
+
+                <!-- Inner Dynamic Shield -->
+                <polygon points="120,52 186,95 186,155 120,192 54,155 54,95" fill="#080808" stroke="#FFE500" stroke-width="3"/>
+
+                <!-- Monogram DT -->
+                <text x="120" y="138" font-family="'Impact', 'Arial Black', sans-serif" font-size="54" font-weight="900" fill="#FFE500" text-anchor="middle" letter-spacing="2">DT</text>
+                <text x="120" y="165" font-family="'Impact', 'Arial Black', sans-serif" font-size="12" fill="#FFFFFF" text-anchor="middle" letter-spacing="3">NST // PUNE</text>
+              </svg>
+
+              <!-- Floating Comic Caption Box -->
+              <div class="cover-dialogue-tag">
+                <span class="tag-speaker">MISSION:</span>
+                <span class="tag-quote">“BECOMING UNSTOPPABLE IN CODE.”</span>
               </div>
             </div>
 
-            <!-- Schematic Footer Bar -->
-            <div class="schematic-footer">
-              <span class="terminal-prompt">&gt; READY_FOR_DEPLOYMENT</span>
-              <span class="schematic-stamp">RESTRICTED DOSSIER</span>
+            <!-- Cover Bottom Strip -->
+            <div class="cover-bottom-bar">
+              <span class="cover-series">COMIC CHRONICLES: CSE VOL. 1</span>
+              <span class="cover-date">FIRST EDITION</span>
             </div>
+
+            <!-- Layered Depth Accents -->
+            <div class="cover-shadow-plane" aria-hidden="true"></div>
           </div>
         </div>
 
       </div>
+
+      <!-- Comic Section Boundary Cut -->
+      <div class="comic-divider-cut cut-yellow" aria-hidden="true"></div>
     </section>
 
     <!-- =======================================================================
-         SECTION: ABOUT — CLASSIFIED PERSONNEL DOSSIER
+         SECTION 2 — ABOUT: INVINCIBLE FLYING ENTRANCE
          ======================================================================= -->
-    <section class="section-block" id="about" aria-labelledby="heading-about">
+    <section class="comic-section section-about scene-character-driven" id="about" data-scene="02" aria-labelledby="heading-about">
       <div class="content-container">
         
-        <!-- Section Header -->
-        <div class="section-header-banner">
-          <div class="section-number-tag">SEC // 01</div>
-          <div class="section-heading-wrap">
-            <h2 class="section-title" id="heading-about">PERSONNEL DOSSIER</h2>
-            <p class="section-subtitle">CLASSIFIED RESEARCH FILE // CANDIDATE SPECIFICATION</p>
+        <!-- Section Header with Scene Badge -->
+        <div class="comic-panel-header">
+          <div class="panel-chapter-tag">PAGE 02</div>
+          <div class="panel-title-wrap">
+            <h2 class="panel-title" id="heading-about">PERSONNEL PROFILE HUB</h2>
+            <p class="panel-subtitle">SCENE: INVINCIBLE FLYING ARRIVAL // CSE STUDENT PROFILE</p>
           </div>
-          <div class="section-divider-line" aria-hidden="true"></div>
         </div>
 
-        <!-- Dossier Document Card Container -->
-        <article class="dossier-card">
-          <!-- Document Header Tab -->
-          <div class="dossier-tab-bar">
-            <span class="dossier-doc-id">RECORD REF: ADYPU-CSE-DT01</span>
-            <span class="dossier-stamp stamp-green" aria-label="Status: Student Developer">ACADEMIC RECORD // VERIFIED</span>
-          </div>
-
-          <div class="dossier-content-grid">
-            
-            <!-- Left Column: Key Metadata Table -->
-            <aside class="dossier-specs-col" aria-label="Personnel Specifications">
-              <h3 class="dossier-specs-heading">RECORD SPECIFICATIONS</h3>
-              <dl class="specs-data-list">
-                <div class="specs-data-item">
-                  <dt class="data-key">FULL NAME</dt>
-                  <dd class="data-val">Dhairya Tiwari</dd>
-                </div>
-                <div class="specs-data-item">
-                  <dt class="data-key">INSTITUTION</dt>
-                  <dd class="data-val">NST-ADYPU</dd>
-                </div>
-                <div class="specs-data-item">
-                  <dt class="data-key">LOCATION</dt>
-                  <dd class="data-val">Pune, Maharashtra, India</dd>
-                </div>
-                <div class="specs-data-item">
-                  <dt class="data-key">DEGREE PROGRAM</dt>
-                  <dd class="data-val">B.Tech Computer Science Engineering</dd>
-                </div>
-                <div class="specs-data-item">
-                  <dt class="data-key">PRIMARY INTERESTS</dt>
-                  <dd class="data-val">Programming &amp; Game Development</dd>
-                </div>
-                <div class="specs-data-item">
-                  <dt class="data-key">STATUS</dt>
-                  <dd class="data-val data-active">
-                    <span class="mini-pip" aria-hidden="true"></span> Actively Learning &amp; Building
-                  </dd>
-                </div>
-              </dl>
-              
-              <div class="spec-tech-note">
-                <span class="note-icon" aria-hidden="true">ℹ</span>
-                <p class="note-text">
-                  This portfolio serves as a living technical log of coursework, software projects, and emerging competencies throughout college.
-                </p>
-              </div>
-            </aside>
-
-            <!-- Right Column: Narrative & Technical Profile -->
-            <div class="dossier-text-col">
-              <h3 class="dossier-subheading">EXECUTIVE SUMMARY</h3>
-              <p class="dossier-paragraph">
-                I am an aspiring developer currently enrolled in the <strong>B.Tech Computer Science Engineering program at NST-ADYPU in Pune</strong>. My core technical curiosity centers on <strong>programming and game development</strong>, with an emphasis on understanding how robust software architectures and interactive virtual worlds function from the ground up.
-              </p>
-              
-              <h3 class="dossier-subheading">METHODOLOGY &amp; PHILOSOPHY</h3>
-              <p class="dossier-paragraph">
-                Rather than jumping to superficial claims of mastery, my focus is rooted in building disciplined fundamentals. I develop my technical capabilities through constant learning, experimentation, and collaborative building—translating abstract algorithmic principles into tangible code.
-              </p>
-              <p class="dossier-paragraph">
-                Whether analyzing structured data in team hackathon prototypes, constructing clean web interfaces, or exploring C# scripting and physics in Unity, my goal is deliberate progression: writing clean, understandable code and consistently shipping functional results.
-              </p>
-
-              <!-- Comic-Panel Tactical Milestone Box -->
-              <div class="dossier-callout-panel">
-                <div class="callout-corner"></div>
-                <h4 class="callout-title">CORE PRINCIPLES</h4>
-                <ul class="callout-list">
-                  <li><strong>Honest Progression:</strong> Grounded in verifiable skills and real project work.</li>
-                  <li><strong>Hands-On Iteration:</strong> Learn by writing, testing, and debugging actual code.</li>
-                  <li><strong>Interdisciplinary Curiosity:</strong> Bridging software logic with creative game design.</li>
-                </ul>
-              </div>
-            </div>
-
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- =======================================================================
-         SECTION: SKILLS & CURRENT LEARNING
-         ======================================================================= -->
-    <section class="section-block" id="skills" aria-labelledby="heading-skills">
-      <div class="content-container">
-        
-        <!-- Section Header -->
-        <div class="section-header-banner">
-          <div class="section-number-tag">SEC // 02</div>
-          <div class="section-heading-wrap">
-            <h2 class="section-title" id="heading-skills">TECHNICAL CAPABILITIES &amp; LEARNING</h2>
-            <p class="section-subtitle">CURRENT FOUNDATIONS // HONEST SKILL INVENTORY</p>
-          </div>
-          <div class="section-divider-line" aria-hidden="true"></div>
-        </div>
-
-        <p class="section-intro-text">
-          Transparent overview of active competencies and foundational technologies currently being studied and practiced. All proficiencies are categorized accurately as ongoing learning stages without inflated ratings or arbitrary percentages.
-        </p>
-
-        <!-- Skill Domain Cards Grid -->
-        <div class="skills-domain-grid">
-
-          <!-- Category 1: Web Fundamentals -->
-          <div class="skill-category-card">
-            <div class="category-header">
-              <div class="cat-indicator" aria-hidden="true"></div>
-              <div class="cat-title-wrap">
-                <span class="cat-serial">MODULE // 01</span>
-                <h3 class="cat-title">Web Fundamentals</h3>
-              </div>
-            </div>
-            <p class="cat-desc">Core structural and styling building blocks for interactive browser-based interfaces.</p>
-            
-            <ul class="skill-item-list" role="list">
-              <li class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">HTML5</span>
-                  <span class="skill-meta">Semantic markup, document structure, accessibility</span>
-                </div>
-                <span class="stage-badge badge-green">Learning / Basic</span>
-              </li>
-              <li class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">CSS3</span>
-                  <span class="skill-meta">Custom properties, Flexbox, Grid, responsive layouts</span>
-                </div>
-                <span class="stage-badge badge-green">Learning / Basic</span>
-              </li>
-              <li class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">JavaScript</span>
-                  <span class="skill-meta">DOM manipulation, event handling, logic foundations</span>
-                </div>
-                <span class="stage-badge badge-green">Learning / Basic</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Category 2: Programming & Version Control -->
-          <div class="skill-category-card">
-            <div class="category-header">
-              <div class="cat-indicator indicator-yellow" aria-hidden="true"></div>
-              <div class="cat-title-wrap">
-                <span class="cat-serial">MODULE // 02</span>
-                <h3 class="cat-title">Programming &amp; Workflow</h3>
-              </div>
-            </div>
-            <p class="cat-desc">General-purpose scripting, algorithmic problem solving, and source version control.</p>
-            
-            <ul class="skill-item-list" role="list">
-              <li class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Python</span>
-                  <span class="skill-meta">Data structures, scripting, procedural programming</span>
-                </div>
-                <span class="stage-badge badge-yellow">Learning / Basic</span>
-              </li>
-              <li class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Git &amp; GitHub</span>
-                  <span class="skill-meta">Branching, committing, remote repositories, collaboration</span>
-                </div>
-                <span class="stage-badge badge-yellow">Learning / Basic</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Category 3: Game Development -->
-          <div class="skill-category-card">
-            <div class="category-header">
-              <div class="cat-indicator indicator-blue" aria-hidden="true"></div>
-              <div class="cat-title-wrap">
-                <span class="cat-serial">MODULE // 03</span>
-                <h3 class="cat-title">Game Development</h3>
-              </div>
-            </div>
-            <p class="cat-desc">Real-time interactive environments, physics modeling, and game architecture fundamentals.</p>
-            
-            <ul class="skill-item-list" role="list">
-              <li class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Unity &amp; C#</span>
-                  <span class="skill-meta">Scene architecture, GameObject scripting, component cycles</span>
-                </div>
-                <span class="stage-badge badge-blue">Learning / Basic</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Category 4: Development Tools -->
-          <div class="skill-category-card">
-            <div class="category-header">
-              <div class="cat-indicator indicator-red" aria-hidden="true"></div>
-              <div class="cat-title-wrap">
-                <span class="cat-serial">MODULE // 04</span>
-                <h3 class="cat-title">Development Tools</h3>
-              </div>
-            </div>
-            <p class="cat-desc">Modern workflows and accelerated development methodologies for learning and rapid testing.</p>
-            
-            <ul class="skill-item-list" role="list">
-              <li class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">AI-Assisted Coding Tools</span>
-                  <span class="skill-meta">Code review, interactive debugging, prototype acceleration</span>
-                </div>
-                <span class="stage-badge badge-red">Learning / Basic</span>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-
-        <!-- Future Skill Expansion Hint (Non-intrusive) -->
-        <div class="skills-footnote">
-          <span class="footnote-tag">// EXPANSION READY</span>
-          <span>Curriculum and self-directed study will introduce database systems, object-oriented design, and advanced software concepts over subsequent semesters.</span>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =======================================================================
-         SECTION: PROJECTS — FEATURED WORK
-         ======================================================================= -->
-    <section class="section-block" id="projects" aria-labelledby="heading-projects">
-      <div class="content-container">
-        
-        <!-- Section Header -->
-        <div class="section-header-banner">
-          <div class="section-number-tag">SEC // 03</div>
-          <div class="section-heading-wrap">
-            <h2 class="section-title" id="heading-projects">FEATURED PROJECTS</h2>
-            <p class="section-subtitle">PRACTICAL BUILDS // EVIDENCE OF LEARNING &amp; TEAMWORK</p>
-          </div>
-          <div class="section-divider-line" aria-hidden="true"></div>
-        </div>
-
-        <!-- Featured Project Card: Scheme Eligibility Navigator -->
-        <article class="project-showcase-card">
+        <!-- Scene Hero Grid: Left Narrative + Right Character Artwork Stage -->
+        <div class="scene-layout-grid scene-about-grid">
           
-          <div class="project-card-header">
-            <div class="project-classification">
-              <span class="project-tag-pill tag-hackathon">HACKATHON PROTOTYPE</span>
-              <span class="project-tag-pill tag-team">TEAM PROJECT</span>
-            </div>
-            <span class="project-serial-id">OP-SCHEME-NAV-01</span>
-          </div>
-
-          <div class="project-card-body">
-            
-            <!-- Left: Description and Architectural Highlights -->
-            <div class="project-details">
-              <h3 class="project-title">Scheme Eligibility Navigator</h3>
+          <!-- Character Artwork Stage (Flying Entrance Animation) -->
+          <div class="section-character-stage stage-invincible" id="stage-invincible">
+            <div class="char-motion-wrap motion-flying">
+              <!-- Energy Speed Trail -->
+              <div class="char-speed-burst burst-yellow-blue" aria-hidden="true"></div>
               
-              <p class="project-summary">
-                A team hackathon prototype focused on helping users explore government schemes and understand eligibility through structured scheme data and application logic.
-              </p>
+              <!-- Character Artwork Image -->
+              <img src="assets/characters/invincible.svg" 
+                   alt="Invincible superhero flying entrance pose in yellow and electric blue suit" 
+                   class="character-art-img img-invincible"
+                   loading="lazy">
 
-              <div class="project-architecture-breakdown">
-                <h4 class="breakdown-heading">IMPLEMENTATION ARCHITECTURE</h4>
-                <p class="breakdown-copy">
-                  Developed collaboratively during a hackathon sprint. The team's solution combined an intuitive user interface with structured data modeling to simplify access to vital citizen benefit programs.
-                </p>
-
-                <!-- Technical Subsystems Grid -->
-                <div class="subsystems-grid">
-                  <div class="subsystem-box">
-                    <span class="subsystem-title">Frontend Interface</span>
-                    <span class="subsystem-desc">User input forms to capture qualification criteria and demographic parameters.</span>
-                  </div>
-                  <div class="subsystem-box">
-                    <span class="subsystem-title">Backend Logic</span>
-                    <span class="subsystem-desc">Server-side request handling and application coordination.</span>
-                  </div>
-                  <div class="subsystem-box">
-                    <span class="subsystem-title">Structured Scheme Data</span>
-                    <span class="subsystem-desc">Organized data schema storing government eligibility criteria and entitlement tiers.</span>
-                  </div>
-                  <div class="subsystem-box">
-                    <span class="subsystem-title">Eligibility Engine</span>
-                    <span class="subsystem-desc">Rule-checking logic filtering matching benefits against user attributes.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Tech Stack Badges -->
-              <div class="project-tech-stack">
-                <span class="tech-badge">Frontend</span>
-                <span class="tech-badge">Backend</span>
-                <span class="tech-badge">Structured Scheme Data</span>
-                <span class="tech-badge">Eligibility Rules</span>
-                <span class="tech-badge">Hackathon Prototype</span>
-              </div>
-
-              <!-- Honest Status Notice (No dead buttons, no fake links) -->
-              <div class="project-status-note">
-                <span class="status-note-icon" aria-hidden="true">⚡</span>
-                <p class="status-note-text">
-                  <strong>Project Status:</strong> Developed as an exploratory hackathon prototype. Verified repository and live deployment links will be made accessible once code repositories are prepared for public demonstration.
-                </p>
-              </div>
-
-            </div>
-
-            <!-- Right: Original CSS/SVG Technical Schematic Diagram (Visualizing System Data Flow) -->
-            <div class="project-visual-panel" aria-label="Schematic diagram of the Scheme Eligibility Navigator system data flow">
-              <div class="schematic-screen">
-                <div class="screen-titlebar">
-                  <span class="screen-pip"></span>
-                  <span class="screen-title">SYSTEM FLOW DIAGRAM // NAVIGATOR</span>
-                </div>
-
-                <!-- Custom SVG System Architecture Visual -->
-                <div class="diagram-canvas">
-                  <svg viewBox="0 0 360 260" class="flow-svg" width="100%" height="auto" role="img" aria-label="Flowchart: User Criteria Input passes to Rule Engine which queries Scheme Data Store to generate Filtered Results">
-                    <!-- Flow Connection Lines -->
-                    <line x1="180" y1="52" x2="180" y2="85" stroke="#344137" stroke-width="2" stroke-dasharray="4 3"/>
-                    <line x1="180" y1="135" x2="180" y2="165" stroke="#A8D98D" stroke-width="2"/>
-                    <line x1="180" y1="205" x2="180" y2="230" stroke="#FFD447" stroke-width="2"/>
-
-                    <!-- Step 1: User Criteria Input -->
-                    <g class="flow-node">
-                      <rect x="50" y="15" width="260" height="38" rx="2" fill="#121814" stroke="#344137" stroke-width="1.5"/>
-                      <circle cx="70" cy="34" r="5" fill="#397BEA"/>
-                      <text x="85" y="38" font-family="'Impact', 'Arial Black', sans-serif" font-size="12" fill="#F0F0E8" letter-spacing="1">01. USER DEMOGRAPHIC INPUT</text>
-                    </g>
-
-                    <!-- Arrow 1 -->
-                    <polygon points="180,88 175,80 185,80" fill="#344137"/>
-
-                    <!-- Step 2: Eligibility Rules Engine -->
-                    <g class="flow-node">
-                      <rect x="35" y="90" width="290" height="46" rx="2" fill="#18221c" stroke="#A8D98D" stroke-width="1.8"/>
-                      <polygon points="45,113 55,107 55,119" fill="#A8D98D"/>
-                      <text x="65" y="112" font-family="'Impact', 'Arial Black', sans-serif" font-size="13" fill="#A8D98D" letter-spacing="1">02. ELIGIBILITY MATCHING LOGIC</text>
-                      <text x="65" y="126" font-family="monospace" font-size="9" fill="#A3ADA4">Filters Criteria against Qualification Rules</text>
-                    </g>
-
-                    <!-- Step 3: Structured Scheme Database Query -->
-                    <g class="flow-node">
-                      <rect x="50" y="165" width="260" height="40" rx="2" fill="#121814" stroke="#344137" stroke-width="1.5"/>
-                      <circle cx="70" cy="185" r="5" fill="#FFD447"/>
-                      <text x="85" y="184" font-family="'Impact', 'Arial Black', sans-serif" font-size="12" fill="#F0F0E8" letter-spacing="1">03. STRUCTURED SCHEME DATA</text>
-                      <text x="85" y="196" font-family="monospace" font-size="9" fill="#6B776D">Government Scheme Records &amp; Tiers</text>
-                    </g>
-
-                    <!-- Arrow 2 -->
-                    <polygon points="180,233 175,225 185,225" fill="#FFD447"/>
-
-                    <!-- Step 4: Targeted Results -->
-                    <g class="flow-node">
-                      <rect x="65" y="232" width="230" height="26" rx="2" fill="#090C0B" stroke="#FFD447" stroke-width="1.5"/>
-                      <text x="180" y="249" font-family="'Impact', 'Arial Black', sans-serif" font-size="11" fill="#FFD447" text-anchor="middle" letter-spacing="1.5">✓ QUALIFIED SCHEMES READOUT</text>
-                    </g>
-                  </svg>
-                </div>
-
-                <div class="screen-footer">
-                  <span class="screen-coords">COORD: 18.5204° N, 73.8567° E (PUNE)</span>
-                  <span class="screen-codec">STATUS: PROTOTYPE_VERIFIED</span>
-                </div>
+              <!-- Comic Dialogue Speech Box -->
+              <div class="char-comic-bubble bubble-invincible">
+                <span class="bubble-tag">INVINCIBLE:</span>
+                <p class="bubble-speech">“I won’t give up on the next level!”</p>
               </div>
             </div>
-
           </div>
 
-        </article>
+          <!-- Narrative & Multi-Chapter Interactive Hub -->
+          <div class="scene-content-stage">
+            <p class="section-lead-text">
+              Select a chapter below to learn about my background, current studies, and interests in programming and game development.
+            </p>
 
-        <!-- Template Note: Easy Addition of Future Projects -->
-        <!-- Future projects can be placed here using the same project-showcase-card structure -->
+            <!-- Comic Chapter Tabs Bar -->
+            <div class="comic-tabs-bar" role="tablist" aria-label="About Hub Subsections">
+              <button type="button" class="comic-tab active" id="tab-intro" role="tab" aria-selected="true" aria-controls="subpanel-intro" data-target="intro">
+                <span class="tab-number">01</span>
+                <span class="tab-text">INTRODUCTION</span>
+              </button>
+              <button type="button" class="comic-tab" id="tab-education" role="tab" aria-selected="false" aria-controls="subpanel-education" data-target="education">
+                <span class="tab-number">02</span>
+                <span class="tab-text">EDUCATION</span>
+              </button>
+              <button type="button" class="comic-tab" id="tab-interests" role="tab" aria-selected="false" aria-controls="subpanel-interests" data-target="interests">
+                <span class="tab-number">03</span>
+                <span class="tab-text">INTERESTS</span>
+              </button>
+              <button type="button" class="comic-tab" id="tab-journey" role="tab" aria-selected="false" aria-controls="subpanel-journey" data-target="journey">
+                <span class="tab-number">04</span>
+                <span class="tab-text">DEV JOURNEY</span>
+              </button>
+              <button type="button" class="comic-tab" id="tab-focus" role="tab" aria-selected="false" aria-controls="subpanel-focus" data-target="focus">
+                <span class="tab-number">05</span>
+                <span class="tab-text">CURRENT FOCUS</span>
+              </button>
+            </div>
+
+            <!-- Dynamic 3D Subpanel Stage -->
+            <div class="about-stage-wrapper">
+              
+              <!-- Subpanel 1: INTRODUCTION -->
+              <div class="about-subpanel active" id="subpanel-intro" role="tabpanel" aria-labelledby="tab-intro">
+                <div class="subpanel-comic-card">
+                  <div class="card-comic-header">
+                    <span class="stamp-box stamp-yellow">ORIGIN PROFILE</span>
+                    <span class="card-serial">ID: DT-PUN-CSE</span>
+                  </div>
+                  
+                  <div class="card-comic-grid">
+                    <div class="grid-text-col">
+                      <h3 class="comic-subhead">MEET DHAIRYA TIWARI</h3>
+                      <div class="comic-speech-balloon">
+                        <p class="balloon-text">
+                          “I'm <strong>Dhairya Tiwari</strong>, a Computer Science Engineering student at <strong>NST-ADYPU in Pune</strong>. 
+                          I'm interested in programming and game development, and I'm developing my technical skills by learning, experimenting, and building projects.”
+                        </p>
+                      </div>
+                      
+                      <h4 class="comic-microhead">PHILOSOPHY &amp; APPROACH</h4>
+                      <p class="comic-body-p">
+                        I am building my technical skills by learning, experimenting, and working on projects.
+                      </p>
+                      <p class="comic-body-p">
+                        I am especially interested in programming and game development.
+                      </p>
+                    </div>
+
+                    <div class="grid-meta-col">
+                      <div class="comic-spec-box">
+                        <h4 class="spec-box-title">VERIFIED PROFILE SPECS</h4>
+                        <dl class="comic-specs-list">
+                          <div class="spec-row">
+                            <dt>FULL NAME</dt>
+                            <dd>Dhairya Tiwari</dd>
+                          </div>
+                          <div class="spec-row">
+                            <dt>DEGREE</dt>
+                            <dd>B.Tech Computer Science Engineering</dd>
+                          </div>
+                          <div class="spec-row">
+                            <dt>INSTITUTION</dt>
+                            <dd>NST-ADYPU</dd>
+                          </div>
+                          <div class="spec-row">
+                            <dt>LOCATION</dt>
+                            <dd>Pune, Maharashtra, India</dd>
+                          </div>
+                          <div class="spec-row">
+                            <dt>PRIMARY FIELDS</dt>
+                            <dd>Programming &amp; Game Development</dd>
+                          </div>
+                          <div class="spec-row">
+                            <dt>STATUS</dt>
+                            <dd class="spec-active-badge">Active CSE Student</dd>
+                          </div>
+                        </dl>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Subpanel 2: EDUCATION -->
+              <div class="about-subpanel" id="subpanel-education" role="tabpanel" aria-labelledby="tab-education" hidden>
+                <div class="subpanel-comic-card card-education-3d">
+                  <div class="card-comic-header">
+                    <span class="stamp-box stamp-blue">ACADEMIC FOUNDATION</span>
+                    <span class="card-serial">NST-ADYPU // CSE</span>
+                  </div>
+                  
+                  <div class="academic-stack-view">
+                    <div class="academic-hero-card">
+                      <div class="academic-crest-icon">
+                        <svg viewBox="0 0 80 80" width="60" height="60" fill="none" stroke="#FFE500" stroke-width="3">
+                          <polygon points="40,10 70,25 70,55 40,70 10,55 10,25" fill="#080808"/>
+                          <polygon points="40,20 60,30 60,50 40,60 20,50 20,30" fill="#1769FF" stroke="#080808" stroke-width="2"/>
+                          <text x="40" y="45" font-family="'Impact', sans-serif" font-size="18" fill="#FFFFFF" text-anchor="middle">CSE</text>
+                        </svg>
+                      </div>
+                      <div class="academic-primary-info">
+                        <span class="degree-tag">CURRENT PROGRAM</span>
+                        <h3 class="degree-title">Bachelor of Technology (B.Tech)</h3>
+                        <h4 class="branch-title">Computer Science and Engineering</h4>
+                        <p class="institution-name">NST-ADYPU</p>
+                        <p class="institution-loc">📍 Pune, India</p>
+                      </div>
+                    </div>
+
+                    <div class="academic-grounding-grid">
+                      <div class="academic-pill-card">
+                        <span class="pill-number">PROGRAM</span>
+                        <strong class="pill-title">B.Tech</strong>
+                        <p class="pill-desc">Bachelor of Technology.</p>
+                      </div>
+                      <div class="academic-pill-card">
+                        <span class="pill-number">DISCIPLINE</span>
+                        <strong class="pill-title">Computer Science Engineering</strong>
+                        <p class="pill-desc">Current field of study.</p>
+                      </div>
+                      <div class="academic-pill-card">
+                        <span class="pill-number">STATUS</span>
+                        <strong class="pill-title">Student</strong>
+                        <p class="pill-desc">Studying at NST-ADYPU in Pune, India.</p>
+                      </div>
+                    </div>
+
+                    <div class="honest-academic-notice">
+                      <span class="notice-icon" aria-hidden="true">ℹ️</span>
+                      <span>Currently pursuing a B.Tech in Computer Science Engineering at NST-ADYPU, Pune, India.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Subpanel 3: INTERESTS -->
+              <div class="about-subpanel" id="subpanel-interests" role="tabpanel" aria-labelledby="tab-interests" hidden>
+                <div class="subpanel-comic-card">
+                  <div class="card-comic-header">
+                    <span class="stamp-box stamp-yellow">TECHNICAL PASSIONS</span>
+                    <span class="card-serial">INTEREST MATRIX</span>
+                  </div>
+                  
+                  <div class="interests-split-grid">
+                    <div class="interest-block block-programming">
+                      <div class="interest-header-strip">
+                        <span class="int-icon">💻</span>
+                        <h3 class="int-title">Programming &amp; Problem Solving</h3>
+                      </div>
+                      <p class="int-body">
+                        I am interested in programming and continue to build my skills through learning and projects.
+                      </p>
+                      <ul class="int-bullets">
+                        <li>Python</li>
+                        <li>JavaScript</li>
+                        <li>Git and GitHub</li>
+                      </ul>
+                      <span class="int-status-badge">Current Study Focus</span>
+                    </div>
+
+                    <div class="interest-block block-gamedev">
+                      <div class="interest-header-strip">
+                        <span class="int-icon">🎮</span>
+                        <h3 class="int-title">Game Development</h3>
+                      </div>
+                      <p class="int-body">
+                        I am interested in game development and am learning Unity and C#.
+                      </p>
+                      <ul class="int-bullets">
+                        <li>Unity</li>
+                        <li>C#</li>
+                        <li>Game development</li>
+                      </ul>
+                      <span class="int-status-badge">Aspiring Interest &amp; Experimentation</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Subpanel 4: DEVELOPMENT JOURNEY -->
+              <div class="about-subpanel" id="subpanel-journey" role="tabpanel" aria-labelledby="tab-journey" hidden>
+                <div class="subpanel-comic-card">
+                  <div class="card-comic-header">
+                      <span class="stamp-box stamp-white">CURRENT LEARNING</span>
+                      <span class="card-serial">SKILLS IN PROGRESS</span>
+                  </div>
+                  
+                  <div class="comic-timeline-track">
+                    <div class="timeline-step">
+                      <div class="step-badge">STEP 01</div>
+                      <div class="step-card">
+                        <h4 class="step-title">Programming</h4>
+                        <p class="step-desc">Learning Python at the Learning / Basic level.</p>
+                      </div>
+                    </div>
+                    <div class="timeline-step">
+                      <div class="step-badge">STEP 02</div>
+                      <div class="step-card">
+                        <h4 class="step-title">Web Development</h4>
+                        <p class="step-desc">Learning HTML, CSS, and JavaScript at the Learning / Basic level.</p>
+                      </div>
+                    </div>
+                    <div class="timeline-step">
+                      <div class="step-badge">STEP 03</div>
+                      <div class="step-card">
+                        <h4 class="step-title">Project Collaboration</h4>
+                        <p class="step-desc">Worked with a team on the Scheme Eligibility Navigator hackathon prototype.</p>
+                      </div>
+                    </div>
+                    <div class="timeline-step">
+                      <div class="step-badge">STEP 04</div>
+                      <div class="step-card">
+                        <h4 class="step-title">Game Development</h4>
+                        <p class="step-desc">Interested in game development and learning Unity and C# at the Learning / Basic level.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Subpanel 5: CURRENT FOCUS -->
+              <div class="about-subpanel" id="subpanel-focus" role="tabpanel" aria-labelledby="tab-focus" hidden>
+                <div class="subpanel-comic-card">
+                  <div class="card-comic-header">
+                      <span class="stamp-box stamp-yellow">CURRENT INTERESTS</span>
+                      <span class="card-serial">LEARNING / BASIC</span>
+                  </div>
+                  
+                  <div class="focus-cards-grid">
+                    <div class="focus-mini-card">
+                      <span class="focus-label">FOCUS 01</span>
+                      <h4 class="focus-name">Programming</h4>
+                      <p class="focus-text">Learning Python and JavaScript.</p>
+                      <span class="focus-pill">Learning / Basic</span>
+                    </div>
+                    <div class="focus-mini-card">
+                      <span class="focus-label">FOCUS 02</span>
+                      <h4 class="focus-name">Web Development</h4>
+                      <p class="focus-text">Learning HTML and CSS.</p>
+                      <span class="focus-pill">Learning / Basic</span>
+                    </div>
+                    <div class="focus-mini-card">
+                      <span class="focus-label">FOCUS 03</span>
+                      <h4 class="focus-name">Game Development</h4>
+                      <p class="focus-text">Interested in game development and learning Unity and C#.</p>
+                      <span class="focus-pill">Learning / Basic</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
 
       </div>
+
+      <div class="comic-divider-cut cut-blue" aria-hidden="true"></div>
     </section>
 
     <!-- =======================================================================
-         SECTION: CURRENT OBJECTIVES & LEARNING JOURNEY
+         SECTION 3 — ACADEMICS: THRAGG IMPACT REVEAL
          ======================================================================= -->
-    <section class="section-block" id="focus" aria-labelledby="heading-focus">
+    <section class="comic-section section-academics scene-character-driven" id="academics" data-scene="03" aria-labelledby="heading-academics">
       <div class="content-container">
         
-        <!-- Section Header -->
-        <div class="section-header-banner">
-          <div class="section-number-tag">SEC // 04</div>
-          <div class="section-heading-wrap">
-            <h2 class="section-title" id="heading-focus">CURRENT OBJECTIVES</h2>
-            <p class="section-subtitle">CONTINUOUS PROGRESSION // NEXT TECHNICAL HORIZONS</p>
+        <div class="comic-panel-header">
+          <div class="panel-chapter-tag">PAGE 03</div>
+          <div class="panel-title-wrap">
+            <h2 class="panel-title" id="heading-academics">ACADEMIC CHRONICLES</h2>
+            <p class="panel-subtitle">SCENE: THRAGG IMPACT REVEAL // CURRENT STUDY DETAILS</p>
           </div>
-          <div class="section-divider-line" aria-hidden="true"></div>
         </div>
 
-        <p class="section-intro-text">
-          Targeted learning goals guiding immediate study, practice sprints, and project building throughout the ongoing academic term.
-        </p>
+        <div class="scene-layout-grid scene-academics-grid">
+          
+          <!-- Character Artwork Stage (Thragg Descending Impact Entrance) -->
+          <div class="section-character-stage stage-thragg" id="stage-thragg">
+            <div class="char-motion-wrap motion-descending">
+              <!-- Crimson Geometric Impact Rings -->
+              <div class="char-impact-ring ring-crimson" aria-hidden="true"></div>
+              
+              <!-- Character Artwork Image -->
+              <img src="assets/characters/thragg.svg" 
+                   alt="Grand Regent Thragg commanding imperial superhero stance in white and crimson" 
+                   class="character-art-img img-thragg"
+                   loading="lazy">
 
-        <!-- Objectives Cards Grid -->
-        <div class="objectives-grid">
-
-          <!-- Objective 1 -->
-          <article class="objective-card">
-            <div class="obj-header">
-              <span class="obj-badge">OBJECTIVE 01</span>
-              <span class="obj-priority priority-high">ACTIVE</span>
+              <!-- Comic Dialogue Speech Box -->
+              <div class="char-comic-bubble bubble-thragg">
+                <span class="bubble-tag">THRAGG:</span>
+                <p class="bubble-speech">“Engineering demands uncompromising precision.”</p>
+              </div>
             </div>
-            <h3 class="obj-title">Strengthening Programming Foundations</h3>
-            <p class="obj-text">
-              Deepening comprehension of fundamental data structures, algorithm design, and disciplined problem solving in Python. Focusing on clean code structure, modularity, and error handling.
+          </div>
+
+          <!-- Academic Content Stage (Unfolding 3D Origami Panels) -->
+          <div class="scene-content-stage">
+            <p class="section-lead-text">
+              Current study: B.Tech Computer Science Engineering at NST-ADYPU in Pune, India.
             </p>
-            <div class="obj-tags">
-              <span class="obj-tag">Python</span>
-              <span class="obj-tag">Problem Solving</span>
-              <span class="obj-tag">Core CS</span>
-            </div>
-          </article>
 
-          <!-- Objective 2 -->
-          <article class="objective-card">
-            <div class="obj-header">
-              <span class="obj-badge">OBJECTIVE 02</span>
-              <span class="obj-priority priority-high">ACTIVE</span>
-            </div>
-            <h3 class="obj-title">Building &amp; Refining Useful Projects</h3>
-            <p class="obj-text">
-              Transitioning from theoretical classroom assignments to shipping practical, end-to-end applications. Emphasizing semantic web structures, structured data handling, and version-controlled teamwork via Git.
-            </p>
-            <div class="obj-tags">
-              <span class="obj-tag">Web Development</span>
-              <span class="obj-tag">Git &amp; GitHub</span>
-              <span class="obj-tag">Collaborative Builds</span>
-            </div>
-          </article>
+            <div class="academics-3d-stage" id="academics-unfold-stage">
+              
+              <!-- Primary Academic Fold: Degree Certificate Frame -->
+              <div class="unfold-panel primary-fold" id="academic-panel-primary">
+                <div class="fold-card-inner">
+                  <div class="fold-tape">
+                    <span class="tape-text">CURRENT ACADEMIC DETAILS</span>
+                  </div>
 
-          <!-- Objective 3 -->
-          <article class="objective-card">
-            <div class="obj-header">
-              <span class="obj-badge">OBJECTIVE 03</span>
-              <span class="obj-priority priority-medium">EXPLORING</span>
+                  <div class="fold-main-content">
+                    <div class="fold-left-crest">
+                      <div class="crest-frame">
+                        <span class="crest-year">CSE</span>
+                        <span class="crest-sig">NST</span>
+                      </div>
+                    </div>
+
+                    <div class="fold-right-details">
+                      <span class="program-kicker">CURRENT PROGRAM</span>
+                      <h3 class="program-title">Bachelor of Technology</h3>
+                      <h4 class="program-major">Computer Science &amp; Engineering</h4>
+                      
+                      <div class="institution-badge-wrap">
+                        <span class="inst-pill">NST-ADYPU</span>
+                        <span class="inst-pill">Pune, India</span>
+                      </div>
+
+                      <p class="program-summary">
+                        Currently pursuing a B.Tech in Computer Science Engineering at NST-ADYPU in Pune, India.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="fold-depth-lip" aria-hidden="true"></div>
+                </div>
+              </div>
+
+              <!-- Secondary Academic Fold: Confirmed Study Details -->
+              <div class="unfold-panel secondary-fold" id="academic-panel-secondary">
+                <div class="fold-card-inner">
+                  <h4 class="pillars-title">STUDY DETAILS</h4>
+                  
+                  <div class="pillars-grid">
+                    <div class="pillar-box">
+                      <div class="pillar-marker">PROGRAM</div>
+                      <h5 class="pillar-name">Bachelor of Technology</h5>
+                      <p class="pillar-desc">B.Tech.</p>
+                    </div>
+
+                    <div class="pillar-box">
+                      <div class="pillar-marker">DISCIPLINE</div>
+                      <h5 class="pillar-name">Computer Science Engineering</h5>
+                      <p class="pillar-desc">Current field of study.</p>
+                    </div>
+
+                    <div class="pillar-box">
+                      <div class="pillar-marker">INSTITUTION</div>
+                      <h5 class="pillar-name">NST-ADYPU</h5>
+                      <p class="pillar-desc">Pune, India.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
-            <h3 class="obj-title">Exploring Game Development</h3>
-            <p class="obj-text">
-              Investigating real-time interactive game mechanics using Unity and C#. Experimenting with 2D/3D physics, player movement controllers, scene management, and game loops.
-            </p>
-            <div class="obj-tags">
-              <span class="obj-tag">Unity</span>
-              <span class="obj-tag">C# Scripting</span>
-              <span class="obj-tag">Interactive Design</span>
-            </div>
-          </article>
+          </div>
 
         </div>
 
       </div>
+
+      <div class="comic-divider-cut cut-yellow" aria-hidden="true"></div>
     </section>
 
     <!-- =======================================================================
-         SECTION: CONTACT & TRANSMISSION
+         SECTION 4 — SKILLS: OMNI-MAN POWER ENTRANCE
          ======================================================================= -->
-    <section class="section-block" id="contact" aria-labelledby="heading-contact">
+    <section class="comic-section section-skills scene-character-driven" id="skills" data-scene="04" aria-labelledby="heading-skills">
       <div class="content-container">
         
-        <!-- Section Header -->
-        <div class="section-header-banner">
-          <div class="section-number-tag">SEC // 05</div>
-          <div class="section-heading-wrap">
-            <h2 class="section-title" id="heading-contact">COMMUNICATION LINK</h2>
-            <p class="section-subtitle">CONNECT &amp; COLLABORATE // ACADEMIC INQUIRIES</p>
+        <div class="comic-panel-header">
+          <div class="panel-chapter-tag">PAGE 04</div>
+          <div class="panel-title-wrap">
+            <h2 class="panel-title" id="heading-skills">ABILITY MATRIX // TECHNICAL POWERS</h2>
+            <p class="panel-subtitle">SCENE: OMNI-MAN POWER ARRIVAL // HONEST COMPETENCIES</p>
           </div>
-          <div class="section-divider-line" aria-hidden="true"></div>
         </div>
 
-        <div class="contact-terminal-card">
-          <div class="terminal-card-topbar">
-            <span class="terminal-title">COMMUNICATION TERMINAL // SECURE NODE</span>
-            <span class="terminal-channel-status"><span class="mini-pip"></span> CHANNEL READY</span>
+        <div class="scene-layout-grid scene-skills-grid">
+          
+          <!-- Character Artwork Stage (Omni-Man Stride Entrance) -->
+          <div class="section-character-stage stage-omniman" id="stage-omniman">
+            <div class="char-motion-wrap motion-stride">
+              <!-- Crimson Sweep Graphic -->
+              <div class="char-power-sweep sweep-crimson" aria-hidden="true"></div>
+              
+              <!-- Character Artwork Image -->
+              <img src="assets/characters/omniman.svg" 
+                   alt="Omni-Man powerful floating superhero stance with billowing red cape and chest insignia" 
+                   class="character-art-img img-omniman"
+                   loading="lazy">
+
+              <!-- Comic Dialogue Speech Box -->
+              <div class="char-comic-bubble bubble-omniman">
+                <span class="bubble-tag">OMNI-MAN:</span>
+                <p class="bubble-speech">“Architecture and fundamentals conquer all.”</p>
+              </div>
+            </div>
           </div>
 
-          <div class="terminal-card-body">
-            <div class="terminal-message-block">
-              <h3 class="contact-lead-text">Connecting with Dhairya Tiwari</h3>
-              <p class="contact-body-text">
-                I'm currently engaged in full-time Computer Science Engineering coursework at NST-ADYPU in Pune, India. 
-                I'm enthusiastic about connecting for academic discussions, student hackathon collaborations, and game development projects.
-              </p>
+          <!-- Skills Matrix Content Stage -->
+          <div class="scene-content-stage">
+            <p class="section-lead-text">
+              All listed skills are at the <strong>Learning / Basic</strong> stage. Tap or hover cards to flip in 3D.
+            </p>
+
+            <div class="ability-grid" id="ability-grid">
+
+              <!-- Skill 1: HTML -->
+              <div class="ability-card" tabindex="0" role="button" aria-expanded="false" data-skill="html">
+                <div class="ability-card-3d">
+                  <div class="card-face face-front">
+                    <div class="ability-header">
+                      <span class="ability-code">PWR // 01</span>
+                      <span class="ability-tier tier-basic">Learning / Basic</span>
+                    </div>
+                    <div class="ability-icon-wrap">
+                      <span class="ability-glyph">&lt;/&gt;</span>
+                    </div>
+                    <h3 class="ability-name">HTML</h3>
+                    <p class="ability-category">Web Fundamentals</p>
+                    <div class="ability-tap-hint">TAP TO FLIP ↻</div>
+                  </div>
+                  <div class="card-face face-back">
+                    <h4 class="back-title">HTML Learning</h4>
+                    <p class="back-desc">
+                      Learning the foundations of HTML for building web pages.
+                    </p>
+                    <div class="back-meta">
+                      <span class="meta-tag">Learning / Basic</span>
+                      <span class="meta-tag">HTML</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Skill 2: CSS -->
+              <div class="ability-card" tabindex="0" role="button" aria-expanded="false" data-skill="css">
+                <div class="ability-card-3d">
+                  <div class="card-face face-front">
+                    <div class="ability-header">
+                      <span class="ability-code">PWR // 02</span>
+                      <span class="ability-tier tier-basic">Learning / Basic</span>
+                    </div>
+                    <div class="ability-icon-wrap">
+                      <span class="ability-glyph">🎨</span>
+                    </div>
+                    <h3 class="ability-name">CSS</h3>
+                    <p class="ability-category">Layouts &amp; Styling</p>
+                    <div class="ability-tap-hint">TAP TO FLIP ↻</div>
+                  </div>
+                  <div class="card-face face-back">
+                    <h4 class="back-title">CSS Learning</h4>
+                    <p class="back-desc">
+                      Learning the foundations of styling and laying out web pages with CSS.
+                    </p>
+                    <div class="back-meta">
+                      <span class="meta-tag">Learning / Basic</span>
+                      <span class="meta-tag">CSS</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Skill 3: JavaScript -->
+              <div class="ability-card" tabindex="0" role="button" aria-expanded="false" data-skill="js">
+                <div class="ability-card-3d">
+                  <div class="card-face face-front">
+                    <div class="ability-header">
+                      <span class="ability-code">PWR // 03</span>
+                      <span class="ability-tier tier-basic">Learning / Basic</span>
+                    </div>
+                    <div class="ability-icon-wrap">
+                      <span class="ability-glyph">⚡</span>
+                    </div>
+                    <h3 class="ability-name">JavaScript</h3>
+                    <p class="ability-category">Logic &amp; Interaction</p>
+                    <div class="ability-tap-hint">TAP TO FLIP ↻</div>
+                  </div>
+                  <div class="card-face face-back">
+                    <h4 class="back-title">JavaScript Learning</h4>
+                    <p class="back-desc">
+                      Learning the foundations of interactive behavior with JavaScript.
+                    </p>
+                    <div class="back-meta">
+                      <span class="meta-tag">Learning / Basic</span>
+                      <span class="meta-tag">JavaScript</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Skill 4: Python -->
+              <div class="ability-card" tabindex="0" role="button" aria-expanded="false" data-skill="python">
+                <div class="ability-card-3d">
+                  <div class="card-face face-front">
+                    <div class="ability-header">
+                      <span class="ability-code">PWR // 04</span>
+                      <span class="ability-tier tier-basic">Learning / Basic</span>
+                    </div>
+                    <div class="ability-icon-wrap">
+                      <span class="ability-glyph">🐍</span>
+                    </div>
+                    <h3 class="ability-name">Python</h3>
+                    <p class="ability-category">Core Programming</p>
+                    <div class="ability-tap-hint">TAP TO FLIP ↻</div>
+                  </div>
+                  <div class="card-face face-back">
+                    <h4 class="back-title">Python Learning</h4>
+                    <p class="back-desc">
+                      Learning Python programming fundamentals.
+                    </p>
+                    <div class="back-meta">
+                      <span class="meta-tag">Learning / Basic</span>
+                      <span class="meta-tag">Python</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Skill 5: Git & GitHub -->
+              <div class="ability-card" tabindex="0" role="button" aria-expanded="false" data-skill="git">
+                <div class="ability-card-3d">
+                  <div class="card-face face-front">
+                    <div class="ability-header">
+                      <span class="ability-code">PWR // 05</span>
+                      <span class="ability-tier tier-basic">Learning / Basic</span>
+                    </div>
+                    <div class="ability-icon-wrap">
+                      <span class="ability-glyph">🐙</span>
+                    </div>
+                    <h3 class="ability-name">Git &amp; GitHub</h3>
+                    <p class="ability-category">Workflow &amp; Versioning</p>
+                    <div class="ability-tap-hint">TAP TO FLIP ↻</div>
+                  </div>
+                  <div class="card-face face-back">
+                    <h4 class="back-title">Git &amp; GitHub Learning</h4>
+                    <p class="back-desc">
+                      Learning version control with Git and GitHub.
+                    </p>
+                    <div class="back-meta">
+                      <span class="meta-tag">Learning / Basic</span>
+                      <span class="meta-tag">Version Control</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Skill 6: Unity & C# -->
+              <div class="ability-card" tabindex="0" role="button" aria-expanded="false" data-skill="unity">
+                <div class="ability-card-3d">
+                  <div class="card-face face-front">
+                    <div class="ability-header">
+                      <span class="ability-code">PWR // 06</span>
+                      <span class="ability-tier tier-basic">Learning / Basic</span>
+                    </div>
+                    <div class="ability-icon-wrap">
+                      <span class="ability-glyph">🎮</span>
+                    </div>
+                    <h3 class="ability-name">Unity &amp; C#</h3>
+                    <p class="ability-category">Game Prototyping</p>
+                    <div class="ability-tap-hint">TAP TO FLIP ↻</div>
+                  </div>
+                  <div class="card-face face-back">
+                    <h4 class="back-title">Unity &amp; C# Learning</h4>
+                    <p class="back-desc">
+                      Learning game development with Unity and C#.
+                    </p>
+                    <div class="back-meta">
+                      <span class="meta-tag">Learning / Basic</span>
+                      <span class="meta-tag">Game Development</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Skill 7: AI-Assisted Tools -->
+              <div class="ability-card" tabindex="0" role="button" aria-expanded="false" data-skill="ai-tools">
+                <div class="ability-card-3d">
+                  <div class="card-face face-front">
+                    <div class="ability-header">
+                      <span class="ability-code">PWR // 07</span>
+                      <span class="ability-tier tier-basic">Learning / Basic</span>
+                    </div>
+                    <div class="ability-icon-wrap">
+                      <span class="ability-glyph">🤖</span>
+                    </div>
+                    <h3 class="ability-name">AI-Assisted Coding Tools</h3>
+                    <p class="ability-category">Accelerated Workflow</p>
+                    <div class="ability-tap-hint">TAP TO FLIP ↻</div>
+                  </div>
+                  <div class="card-face face-back">
+                    <h4 class="back-title">AI-Assisted Coding</h4>
+                    <p class="back-desc">
+                      Learning to work with AI-assisted coding tools.
+                    </p>
+                    <div class="back-meta">
+                      <span class="meta-tag">Learning / Basic</span>
+                      <span class="meta-tag">Coding Tools</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
-            <!-- Authentic Contact Channels Notice:
-                 When official GitHub, LinkedIn, or Email URLs are configured, 
-                 uncomment the respective links below. No fake URLs or non-working forms are included. -->
-            <div class="contact-channels-wrap">
-              <div class="channel-status-box">
-                <span class="channel-status-indicator" aria-hidden="true">📡</span>
-                <div class="channel-status-info">
-                  <h4 class="channel-status-heading">DIRECT ACCESS CHANNELS</h4>
-                  <p class="channel-status-desc">
-                    Official GitHub and LinkedIn handles will be published as project repositories are released. For academic or collaborative opportunities, connect via the campus network at NST-ADYPU.
+            <div class="skills-comic-banner">
+              <span class="banner-icon" aria-hidden="true">⭐</span>
+              <span><strong>Current level:</strong> All listed skills are at the Learning / Basic stage.</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="comic-divider-cut cut-black" aria-hidden="true"></div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 5 — PROJECTS: BATTLE BEAST IMPACT SCENE
+         ======================================================================= -->
+    <section class="comic-section section-projects scene-character-driven" id="projects" data-scene="05" aria-labelledby="heading-projects">
+      <div class="content-container">
+        
+        <div class="comic-panel-header">
+          <div class="panel-chapter-tag">PAGE 05</div>
+          <div class="panel-title-wrap">
+            <h2 class="panel-title" id="heading-projects">FEATURED MISSIONS // PROJECTS</h2>
+            <p class="panel-subtitle">SCENE: BATTLE BEAST IMPACT // TEAM HACKATHON PROTOTYPE</p>
+          </div>
+        </div>
+
+        <div class="scene-layout-grid scene-projects-grid">
+          
+          <!-- Character Artwork Stage (Battle Beast Bone-Crushing Impact) -->
+          <div class="section-character-stage stage-battlebeast" id="stage-battlebeast">
+            <div class="char-motion-wrap motion-impact">
+              <!-- Radial Crimson Starburst -->
+              <div class="char-impact-starburst starburst-crimson" aria-hidden="true"></div>
+              
+              <!-- Character Artwork Image -->
+              <img src="assets/characters/battlebeast.svg" 
+                   alt="Battle Beast ferocious lion warrior wielding massive combat blade" 
+                   class="character-art-img img-battlebeast"
+                   loading="lazy">
+
+              <!-- Comic Dialogue Speech Box -->
+              <div class="char-comic-bubble bubble-battlebeast">
+                <span class="bubble-tag">BATTLE BEAST:</span>
+                <p class="bubble-speech">“A worthy technical challenge!”</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Showcase Content Stage -->
+          <div class="scene-content-stage">
+            <p class="section-lead-text">
+              A team hackathon prototype exploring how structured scheme information can help people check eligibility.
+            </p>
+
+            <article class="mission-comic-card" id="mission-scheme-nav">
+              <div class="mission-top-header">
+                <div class="mission-tags">
+                  <span class="comic-tag tag-hackathon">HACKATHON PROTOTYPE</span>
+                  <span class="comic-tag tag-team">TEAM PROJECT</span>
+                </div>
+                <span class="mission-serial">MISSION CODE: OP-SCHEME-NAV-01</span>
+              </div>
+
+              <div class="mission-card-body">
+                <div class="mission-info-col">
+                  <h3 class="mission-title">Scheme Eligibility Navigator</h3>
+                  
+                  <div class="mission-speech-bubble">
+                    <p class="bubble-desc">
+                      A collaborative team hackathon prototype created to help citizens explore government schemes and determine their personal eligibility through structured data models and rule-based evaluation logic.
+                    </p>
+                  </div>
+
+                  <div class="mission-architecture-box">
+                    <h4 class="arch-box-title">SYSTEM ARCHITECTURE BREAKDOWN</h4>
+                    <p class="arch-box-desc">
+                      Engineered during a hackathon sprint. Our team structured the solution into modular subsystems to transform complex government criteria into understandable eligibility answers:
+                    </p>
+
+                    <div class="subsystems-comic-grid">
+                      <div class="subsystem-comic-item">
+                        <span class="sub-num">01</span>
+                        <strong class="sub-name">Frontend Input Interface</strong>
+                        <span class="sub-desc">Accessible intake forms capturing user demographics, income brackets, and regional criteria.</span>
+                      </div>
+                      <div class="subsystem-comic-item">
+                        <span class="sub-num">02</span>
+                        <strong class="sub-name">Backend Processing Logic</strong>
+                        <span class="sub-desc">Server-side request parsing, input sanitization, and workflow coordination.</span>
+                      </div>
+                      <div class="subsystem-comic-item">
+                        <span class="sub-num">03</span>
+                        <strong class="sub-name">Structured Scheme Database</strong>
+                        <span class="sub-desc">Standardized schemas storing qualification requirements and entitlement benefits.</span>
+                      </div>
+                      <div class="subsystem-comic-item">
+                        <span class="sub-num">04</span>
+                        <strong class="sub-name">Eligibility Matching Engine</strong>
+                        <span class="sub-desc">Rule evaluation logic comparing citizen attributes against scheme prerequisites.</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mission-tech-stack">
+                    <span class="tech-chip">Frontend UI</span>
+                    <span class="tech-chip">Backend Logic</span>
+                    <span class="tech-chip">Structured Scheme Data</span>
+                    <span class="tech-chip">Rule Engine</span>
+                    <span class="tech-chip">Team Sprint</span>
+                  </div>
+
+                  <div class="mission-status-box">
+                    <span class="status-shield-icon" aria-hidden="true">🛡️</span>
+                    <p class="status-shield-text">
+                      <strong>Project status:</strong> Team hackathon prototype. No public repository or live demo link is configured here yet.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Interactive SVG System Data Flow Schematic -->
+                <div class="mission-visual-col" aria-label="Scheme Eligibility Navigator system architecture flowchart">
+                  <div class="comic-screen-frame">
+                    <div class="screen-titlebar">
+                      <span class="screen-indicator"></span>
+                      <span class="screen-heading">SYSTEM DATA FLOW // ARCHITECTURE</span>
+                    </div>
+
+                    <div class="schematic-canvas-wrap">
+                      <svg viewBox="0 0 380 300" class="comic-flow-svg" width="100%" height="auto" role="img" aria-label="Flowchart: User Demographics feed into Eligibility Engine, which matches against Structured Scheme Database to produce Qualified Scheme Readouts">
+                        <defs>
+                          <filter id="comicShadowProj" x="-10%" y="-10%" width="120%" height="120%">
+                            <feDropShadow dx="3" dy="3" stdDeviation="0" flood-color="#080808" flood-opacity="1"/>
+                          </filter>
+                        </defs>
+
+                        <!-- Connecting Dynamic Lines -->
+                        <line x1="190" y1="58" x2="190" y2="92" stroke="#080808" stroke-width="4"/>
+                        <line x1="190" y1="60" x2="190" y2="90" stroke="#FFE500" stroke-width="2"/>
+
+                        <line x1="190" y1="150" x2="190" y2="182" stroke="#080808" stroke-width="4"/>
+                        <line x1="190" y1="152" x2="190" y2="180" stroke="#1769FF" stroke-width="2"/>
+
+                        <line x1="190" y1="234" x2="190" y2="260" stroke="#080808" stroke-width="4"/>
+                        <line x1="190" y1="236" x2="190" y2="258" stroke="#FFE500" stroke-width="2"/>
+
+                        <!-- Step 1: User Demographics Input -->
+                        <g class="flow-group" filter="url(#comicShadowProj)">
+                          <rect x="30" y="16" width="320" height="42" rx="4" fill="#FFFFFF" stroke="#080808" stroke-width="3"/>
+                          <circle cx="56" cy="37" r="8" fill="#1769FF" stroke="#080808" stroke-width="2"/>
+                          <text x="74" y="42" font-family="'Impact', 'Arial Black', sans-serif" font-size="14" fill="#080808" letter-spacing="1">01. USER DEMOGRAPHIC INPUT</text>
+                        </g>
+
+                        <!-- Step 2: Eligibility Rules Engine -->
+                        <g class="flow-group" filter="url(#comicShadowProj)">
+                          <rect x="20" y="94" width="340" height="56" rx="4" fill="#FFE500" stroke="#080808" stroke-width="3.5"/>
+                          <polygon points="36,122 48,114 48,130" fill="#080808"/>
+                          <text x="58" y="120" font-family="'Impact', 'Arial Black', sans-serif" font-size="15" fill="#080808" letter-spacing="1">02. ELIGIBILITY MATCHING LOGIC</text>
+                          <text x="58" y="136" font-family="monospace" font-size="10" font-weight="bold" fill="#080808">Filters Attributes Against Entitlement Criteria</text>
+                        </g>
+
+                        <!-- Step 3: Structured Scheme Database Query -->
+                        <g class="flow-group" filter="url(#comicShadowProj)">
+                          <rect x="30" y="184" width="320" height="48" rx="4" fill="#1769FF" stroke="#080808" stroke-width="3"/>
+                          <circle cx="56" cy="208" r="8" fill="#FFE500" stroke="#080808" stroke-width="2"/>
+                          <text x="74" y="206" font-family="'Impact', 'Arial Black', sans-serif" font-size="14" fill="#FFFFFF" letter-spacing="1">03. STRUCTURED SCHEME DATA</text>
+                          <text x="74" y="222" font-family="monospace" font-size="9" fill="#D9D9D9">Indexed State &amp; National Scheme Criteria</text>
+                        </g>
+
+                        <!-- Step 4: Qualified Results -->
+                        <g class="flow-group" filter="url(#comicShadowProj)">
+                          <rect x="45" y="260" width="290" height="34" rx="4" fill="#080808" stroke="#FFE500" stroke-width="2.5"/>
+                          <text x="190" y="282" font-family="'Impact', 'Arial Black', sans-serif" font-size="13" fill="#FFE500" text-anchor="middle" letter-spacing="2">✓ QUALIFIED SCHEMES READOUT</text>
+                        </g>
+                      </svg>
+                    </div>
+
+                    <div class="screen-footer-bar">
+                      <span class="footer-coord">📍 NST-ADYPU HACKATHON // PUNE</span>
+                      <span class="footer-badge">HACKATHON PROTOTYPE</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </article>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="comic-divider-cut cut-white" aria-hidden="true"></div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 6 — JOURNEY / CURRENT FOCUS: ATOM EVE-INSPIRED TRANSITION
+         ======================================================================= -->
+    <section class="comic-section section-journey scene-character-driven" id="journey" data-scene="06" aria-labelledby="heading-journey">
+      <div class="content-container">
+        
+        <div class="comic-panel-header">
+          <div class="panel-chapter-tag">PAGE 06</div>
+          <div class="panel-title-wrap">
+            <h2 class="panel-title" id="heading-journey">LEARNING JOURNEY</h2>
+            <p class="panel-subtitle">SCENE: ATOM EVE RADIANT EXPANSION // LEARNING HORIZONS</p>
+          </div>
+        </div>
+
+        <div class="scene-layout-grid scene-journey-grid">
+          
+          <!-- Character Artwork Stage (Atom Eve Matter-Manipulating Flight) -->
+          <div class="section-character-stage stage-atomeve" id="stage-atomeve">
+            <div class="char-motion-wrap motion-radiant">
+              <!-- Orbiting Atomic Energy Ribbons -->
+              <div class="char-energy-ribbons ribbons-pink" aria-hidden="true"></div>
+              
+              <!-- Character Artwork Image -->
+              <img src="assets/characters/atomeve.svg" 
+                   alt="Atom Eve radiant superhero flight pose manipulating pink atomic energy" 
+                   class="character-art-img img-atomeve"
+                   loading="lazy">
+
+              <!-- Comic Dialogue Speech Box -->
+              <div class="char-comic-bubble bubble-atomeve">
+                <span class="bubble-tag">ATOM EVE:</span>
+                <p class="bubble-speech">“Rearranging code, creating the future.”</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Journey Content Stage (Chronicle Strip) -->
+          <div class="scene-content-stage">
+            <p class="section-lead-text">
+              Four current learning interests, alongside the team hackathon prototype.
+            </p>
+
+            <div class="chronicles-strip-grid">
+              
+              <!-- Panel 1 -->
+              <article class="chronicle-panel panel-1">
+                <div class="panel-badge-top">PANEL 01</div>
+                <div class="panel-inner">
+                  <span class="panel-icon">🧱</span>
+                  <h3 class="panel-heading">Programming</h3>
+                  <p class="panel-desc">
+                    Learning Python at the Learning / Basic level.
+                  </p>
+                  <div class="panel-footer-tag">Learning / Basic</div>
+                </div>
+              </article>
+
+              <!-- Panel 2 -->
+              <article class="chronicle-panel panel-2">
+                <div class="panel-badge-top">PANEL 02</div>
+                <div class="panel-inner">
+                  <span class="panel-icon">🌐</span>
+                  <h3 class="panel-heading">Web Development</h3>
+                  <p class="panel-desc">
+                    Learning HTML, CSS, and JavaScript at the Learning / Basic level.
+                  </p>
+                  <div class="panel-footer-tag">Learning / Basic</div>
+                </div>
+              </article>
+
+              <!-- Panel 3 -->
+              <article class="chronicle-panel panel-3">
+                <div class="panel-badge-top">PANEL 03</div>
+                <div class="panel-inner">
+                  <span class="panel-icon">🎮</span>
+                  <h3 class="panel-heading">Game Development</h3>
+                  <p class="panel-desc">
+                    Interested in game development and learning Unity and C# at the Learning / Basic level.
+                  </p>
+                  <div class="panel-footer-tag">Learning / Basic</div>
+                </div>
+              </article>
+
+              <!-- Panel 4 -->
+              <article class="chronicle-panel panel-4">
+                <div class="panel-badge-top">PANEL 04</div>
+                <div class="panel-inner">
+                  <span class="panel-icon">🚀</span>
+                  <h3 class="panel-heading">Project Collaboration</h3>
+                  <p class="panel-desc">
+                    Worked with a team on the Scheme Eligibility Navigator hackathon prototype.
+                  </p>
+                  <div class="panel-footer-tag">Team Project</div>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="comic-divider-cut cut-yellow" aria-hidden="true"></div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 7 — CONTACT: ALLEN THE ALIEN-INSPIRED FINALE
+         ======================================================================= -->
+    <section class="comic-section section-contact scene-character-driven" id="contact" data-scene="07" aria-labelledby="heading-contact">
+      <div class="content-container">
+        
+        <div class="comic-panel-header">
+          <div class="panel-chapter-tag">PAGE 07</div>
+          <div class="panel-title-wrap">
+            <h2 class="panel-title" id="heading-contact">THE FINAL COMIC PANEL</h2>
+            <p class="panel-subtitle">SCENE: ALLEN THE ALIEN FINALE // TRANSMISSION &amp; COLLABORATION</p>
+          </div>
+        </div>
+
+        <div class="scene-layout-grid scene-contact-grid">
+          
+          <!-- Character Artwork Stage (Allen the Alien Thumbs Up Wave) -->
+          <div class="section-character-stage stage-allen" id="stage-allen">
+            <div class="char-motion-wrap motion-cosmic">
+              <!-- Cosmic Ring & Star Aura -->
+              <div class="char-cosmic-rings rings-cyan-yellow" aria-hidden="true"></div>
+              
+              <!-- Character Artwork Image -->
+              <img src="assets/characters/allenthealien.svg" 
+                   alt="Allen the Alien energetic cosmic superhero giving a friendly thumbs up" 
+                   class="character-art-img img-allen"
+                   loading="lazy">
+
+              <!-- Comic Dialogue Speech Box -->
+              <div class="char-comic-bubble bubble-allen">
+                <span class="bubble-tag">ALLEN THE ALIEN:</span>
+                <p class="bubble-speech">“Cosmic connections start right here!”</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Finale Content Stage -->
+          <div class="scene-content-stage">
+            <div class="contact-finale-card">
+              <div class="finale-header-strip">
+                <span class="strip-headline">ISSUE #01 FINALE</span>
+                <span class="strip-status">TRANSMISSION READY</span>
+              </div>
+
+              <div class="finale-body">
+                <div class="finale-headline-group">
+                  <h3 class="finale-big-title">THE NEXT CHAPTER STARTS HERE.</h3>
+                  <p class="finale-subtext">
+                    I am a B.Tech Computer Science Engineering student at NST-ADYPU in Pune, India. I am interested in programming and game development.
                   </p>
                 </div>
-              </div>
 
-              <!-- 
-                ===================================================================
-                HOW TO ADD YOUR REAL LINKS:
-                Uncomment this block and insert your genuine profiles:
-                
-                <div class="direct-links-group">
-                  <a href="https://github.com/YOUR_USERNAME" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
-                    GITHUB PROFILE ↗
-                  </a>
-                  <a href="https://linkedin.com/in/YOUR_USERNAME" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
-                    LINKEDIN PROFILE ↗
-                  </a>
-                  <a href="mailto:your.email@example.com" class="btn btn-secondary">
-                    SEND EMAIL ✉
+                <div class="finale-dialogue-bubble">
+                  <p class="bubble-p">
+                    “I am interested in programming and game development, and I enjoy learning by working on projects.”
+                  </p>
+                  <span class="bubble-author">— Dhairya Tiwari // NST-ADYPU, Pune</span>
+                </div>
+
+                <div class="finale-channels-box">
+                  <div class="channel-info-row">
+                    <span class="channel-icon" aria-hidden="true">📡</span>
+                    <div class="channel-copy">
+                      <h4 class="channel-title">CONNECTING WITH DHAIRYA</h4>
+                      <p class="channel-desc">Public email, GitHub, and LinkedIn links are not configured yet.</p>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="finale-footer-actions">
+                  <a href="#hero" class="comic-btn btn-return-top" id="btn-return-top">
+                    <span class="btn-skew-bg"></span>
+                    <span class="btn-label">RETURN TO COMIC COVER ↑</span>
                   </a>
                 </div>
-                =================================================================== 
-              -->
+
+              </div>
+
+              <div class="finale-bottom-bar">
+                <span>END OF ISSUE #01</span>
+                <span>PUBLISHED BY DHAIRYA TIWARI // PUNE, INDIA</span>
+              </div>
             </div>
           </div>
 
-          <div class="terminal-card-footer">
-            <span class="terminal-status-text">&gt; TRANSMISSION INTERFACE READY // PUNE, IN</span>
-            <a href="#hero" class="back-to-top-link">
-              <span>RETURN TO TOP</span>
-              <span aria-hidden="true">↑</span>
-            </a>
-          </div>
         </div>
 
       </div>
@@ -776,30 +1330,29 @@
   </main>
 
   <!-- =========================================================================
-       FOOTER
+       FOOTER: COMIC CREDITS STRIP
        ========================================================================= -->
   <footer class="site-footer">
-    <div class="content-container footer-content">
+    <div class="content-container footer-flex">
       
-      <div class="footer-identity">
-        <span class="footer-name">DHAIRYA TIWARI</span>
-        <span class="footer-meta">Computer Science Engineering Student // NST-ADYPU, Pune</span>
+      <div class="footer-credits">
+        <span class="credits-title">DHAIRYA TIWARI // PORTFOLIO CHRONICLES</span>
+        <span class="credits-meta">B.Tech Computer Science Engineering Student // NST-ADYPU, Pune</span>
       </div>
 
-      <div class="footer-technical">
-        <p class="footer-copy">
-          &copy; <span id="current-year">2026</span> Dhairya Tiwari. Built with semantic HTML5, CSS3 &amp; Vanilla JavaScript.
+      <div class="footer-legal">
+        <p class="legal-copy">
+          &copy; <span id="current-year">2026</span> Dhairya Tiwari.
         </p>
-        <p class="footer-subtext">
-          Zero external runtime dependencies. Designed for long-term college maintainability.
+        <p class="legal-note">
+          Inspired by the visual energy, dramatic pacing, and graphic novel universe of INVINCIBLE.
         </p>
       </div>
 
     </div>
   </footer>
 
-  <!-- Script for accessible navigation, scroll observer, and dynamic year -->
+  <!-- Main JavaScript Bundle -->
   <script src="script.js"></script>
 </body>
 </html>
-
